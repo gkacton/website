@@ -1,0 +1,52 @@
+[[main]]
+  name = "Blog"
+  url = ""
+  weight = -110
+
+# Submenus are done this way: parent -> identifier
+[[main]]
+  name = "Projects"
+  identifier = "Projects"
+  weight = -108
+[[main]]
+  parent = "Projects"
+  name = "Rufus Porter"
+  url = "https://www.rufusportermuseum.org" 
+[[main]]
+  parent = "Projects"
+  name = "Seamstresses"
+  url = "https://gkacton.github.io/seamstresses/"
+
+[[main]]
+  name = "About"
+  url = "about/"
+  weight = -107
+
+# social menu links
+
+[[social]]
+  name = "github"
+  type = "social"
+  weight = 1
+  url = "https://github.com/gkacton"
+[[social]]
+  name = "linkedin"
+  weight = 3
+  url = "https://www.linkedin.com/in/gkacton"
+[[social]]
+  name = "instagram"
+  url = "https://instagram.com/dressing_up_data"
+
+# other supported social links
+# name = "youtube"
+# url = "https://www.youtube.com/#"
+# name = "facebook"
+# url = "https://facebook.com/#"
+# name = "instagram"
+# url = "https://instagram.com/#"
+# name = "stackoverflow"
+# url = "https://stackoverflow.com/#"
+# name = "gitlab"
+# url = "https://gitlab.com/#"
+# name = "discord"
+# url = "https://discord.gg/#"

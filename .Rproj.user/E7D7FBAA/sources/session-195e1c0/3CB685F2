@@ -1,0 +1,26 @@
+{
+    "id": "3CB685F2",
+    "path": "~/Desktop/website/config/_default/menus/menu.en.toml",
+    "project_path": "config/_default/menus/menu.en.toml",
+    "type": "toml",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1674232340056.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "17,16",
+        "scrollLine": "6"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1674233362,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1674233362223,
+    "read_only": false,
+    "read_only_alternatives": []
+}

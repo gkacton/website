@@ -1,5 +1,10 @@
 # enable search
 enableSearch = false
+# baseurl = "https://example.com/"  # Include trailing slash
+title = "Dressing Up Data"
+AuthorName = "Grace Acton"
+  # copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
+# canonifyurls = true
 
 # socials
 # twitter = "@janedoe"
@@ -134,7 +139,7 @@ enforceLightMode = false
 # website author
 [author]
 name = "Grace Acton"
-# photo = "images/GActonSummer22.jpeg" #include this if you would like to show the author photo on the sidebar
+photo = "images/GActonSummer22_cropped.jpeg" #include this if you would like to show the author photo on the sidebar
 
 [plausible_analytics]
 enable = false # to enable plausible analytics set to true.

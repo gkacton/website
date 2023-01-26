@@ -1,4 +1,9 @@
 [[main]]
+  name = "About"
+  url = "about/"
+  weight = -107 
+
+[[main]]
   name = "Blog"
   url = ""
   weight = -110
@@ -16,11 +21,6 @@
   parent = "Projects"
   name = "Seamstresses"
   url = "https://gkacton.github.io/seamstresses/"
-
-[[main]]
-  name = "About"
-  url = "about/"
-  weight = -107
 
 # social menu links
 

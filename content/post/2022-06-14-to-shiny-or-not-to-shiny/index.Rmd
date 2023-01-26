@@ -48,7 +48,7 @@ knitr::kable(pros_cons) %>%
 My main qualm is the limited memory. Here's the aforementioned Lyme disease dashboard:
 
 
-```{r lyme-app, echo=FALSE, out.width="150%", fig.cap= "Lyme disease Shiny app. Apologies if it doesn't work - guess that's proof that Shiny hosting is super inconsistent."}
+```{r lyme-app, echo=FALSE, out.width="75%", fig.cap= "Lyme disease Shiny app. Apologies if it doesn't work - guess that's proof that Shiny hosting is super inconsistent."}
 knitr::include_app("https://laurie-the-student-baker.shinyapps.io/lyme_indicators/", height = '500px')
 ```
 
@@ -70,7 +70,7 @@ This is far from a finished product - there are still a lot of images missing th
 
 Feel free to let me know what you think in the comments!
 
-```{r rpm-app, echo=FALSE, out.width='150%'}
+```{r rpm-app, echo=FALSE, out.width='75%'}
 knitr::include_app("https://gkacton.shinyapps.io/art-map/", height = '500px')
 ```
 

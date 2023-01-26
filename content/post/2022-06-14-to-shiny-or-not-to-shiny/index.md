@@ -57,7 +57,7 @@ My main qualm is the limited memory. Here's the aforementioned Lyme disease dash
 
 
 <div class="figure">
-<iframe src="https://laurie-the-student-baker.shinyapps.io/lyme_indicators/?showcase=0" width="150%" height="500px" data-external="1"></iframe>
+<iframe src="https://laurie-the-student-baker.shinyapps.io/lyme_indicators/?showcase=0" width="75%" height="500px" data-external="1"></iframe>
 <p class="caption">Figure 1: Lyme disease Shiny app. Apologies if it doesn't work - guess that's proof that Shiny hosting is super inconsistent.</p>
 </div>
 
@@ -79,5 +79,5 @@ This is far from a finished product - there are still a lot of images missing th
 
 Feel free to let me know what you think in the comments!
 
-<iframe src="https://gkacton.shinyapps.io/art-map/?showcase=0" width="150%" height="500px" data-external="1"></iframe>
+<iframe src="https://gkacton.shinyapps.io/art-map/?showcase=0" width="75%" height="500px" data-external="1"></iframe>
 

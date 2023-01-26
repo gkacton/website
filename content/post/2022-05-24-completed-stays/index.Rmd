@@ -8,7 +8,6 @@ categories:
 tags:
   - 18th Century
   - Handsewing
-  - Corsetry
 publishdate: '2022-05-24T22:30:25-04:00'
 comments: yes
 ---

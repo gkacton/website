@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Dressing Up Data</title>
+    <link>https://example.com/tags/r/</link>
+    <description>Recent content in R on Dressing Up Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 14 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To Shiny or Not to Shiny</title>
+      <link>https://example.com/post/2022-06-14-to-shiny-or-not-to-shiny/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/2022-06-14-to-shiny-or-not-to-shiny/</guid>
+      <description>
+        
+          
+            That is the question… Shiny is one of my favorite R packages.
+For those who aren’t R enthusiasts (or those who are but haven’t yet been introduced to Shiny), Shiny is an R package that allows you to create interactive applications. With a single script, you can super easily create a UI and server that will take user input and generate graphs, tables, text, and even maps.
+So far, I’ve mostly used Shiny to level up my leaflet game.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

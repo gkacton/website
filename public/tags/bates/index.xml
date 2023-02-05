@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bates on Dressing Up Data</title>
+    <link>https://example.com/tags/bates/</link>
+    <description>Recent content in Bates on Dressing Up Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/bates/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Year, New Post</title>
+      <link>https://example.com/post/new-project/</link>
+      <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/new-project/</guid>
+      <description>
+        
+          
+            Long time no see! Friends, it’s been a very busy semester and holiday season. But, I want to share some updates before the winter semester starts next week!
+New Digital Exhibit I took two wonderful history classes this semester. Taking Technology in US History was an absolute highlight for me; the course started out solidly in my 18th and 19th century comfort zone, covering railroads, mills, and agriculture, but by the second half we were talking about modern technology that I regularly use but hadn’t thought about critically.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Dressing Up Data</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Posts on Dressing Up Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Year, New Post</title>
+      <link>https://example.com/post/new-project/</link>
+      <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/new-project/</guid>
+      <description>
+        
+          
+            Long time no see! Friends, it’s been a very busy semester and holiday season. But, I want to share some updates before the winter semester starts next week!
+New Digital Exhibit I took two wonderful history classes this semester. Taking Technology in US History was an absolute highlight for me; the course started out solidly in my 18th and 19th century comfort zone, covering railroads, mills, and agriculture, but by the second half we were talking about modern technology that I regularly use but hadn’t thought about critically.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Other Duties as Assigned: Recapping My Nancy Drew Summer</title>
+      <link>https://example.com/post/2022-06-27-my-nancy-drew-summer/</link>
+      <pubDate>Mon, 27 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/2022-06-27-my-nancy-drew-summer/</guid>
+      <description>
+        
+          
+            It’s up to you as Nancy Drew… Did you know that between 1998 and 2015, the video game company HER Interactive released 32 Nancy Drew PC point-and-click adventure games? If you’ve spent any time with me in real life, then you definitely know about them, since I love them and talk about them constantly. I very regularly start a sentence with “Well, there’s this one Nancy Drew game where…”
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>To Shiny or Not to Shiny</title>
+      <link>https://example.com/post/2022-06-14-to-shiny-or-not-to-shiny/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/2022-06-14-to-shiny-or-not-to-shiny/</guid>
+      <description>
+        
+          
+            That is the question… Shiny is one of my favorite R packages.
+For those who aren’t R enthusiasts (or those who are but haven’t yet been introduced to Shiny), Shiny is an R package that allows you to create interactive applications. With a single script, you can super easily create a UI and server that will take user input and generate graphs, tables, text, and even maps.
+So far, I’ve mostly used Shiny to level up my leaflet game.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Week One at Rufus Porter</title>
+      <link>https://example.com/post/rpm-week-one/</link>
+      <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/rpm-week-one/</guid>
+      <description>
+        
+          
+            Figure 1: Mural from the Francis Howe House, painted by Rufus Porter and Stephen Twombly Porter in 1838. Photo by David Bohl via the University of Maine.  Happy summer! This week I started my summer internship at the Rufus Porter Museum of Art and Ingenuity in Bridgton, Maine. The RPM is a very small museum - I’m one of three employees at the moment - so I really get to see all the different sides of running a museum.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Completed 1770s Stays </title>
+      <link>https://example.com/post/completed-stays/</link>
+      <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/completed-stays/</guid>
+      <description>
+        
+          
+            Not just wearable - finished! I’m super proud of how these turned out. It was a huge challenge to do the entire staymaking process - from drafting the pattern, to sewing boning channels, to binding tabs - entirely by myself and entirely by hand. But, it was also really rewarding. My handsewing skills have improved so much in the last year and a half, and so has my confidence in handsewing.
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Work in Progress: 18th Century Stays</title>
+      <link>https://example.com/post/wip-stays/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/wip-stays/</guid>
+      <description>
+        
+          
+            Well, it’s taking a while. I started these stays in January 2021, when I wanted a compact handsewing project to take back to school with me. I worked pretty diligently on stitching the boning channels (aka, 100 lines of backstitching), and finished that up in May 2021.
+Then, I ran out of steam. I was doing so much handsewing for my job at Old Sturbridge Village that I had no interest in doing more on my own time.
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

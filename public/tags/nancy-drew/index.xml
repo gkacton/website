@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nancy Drew on Dressing Up Data</title>
+    <link>https://example.com/tags/nancy-drew/</link>
+    <description>Recent content in Nancy Drew on Dressing Up Data</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 27 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/nancy-drew/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Other Duties as Assigned: Recapping My Nancy Drew Summer</title>
+      <link>https://example.com/post/2022-06-27-my-nancy-drew-summer/</link>
+      <pubDate>Mon, 27 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/2022-06-27-my-nancy-drew-summer/</guid>
+      <description>
+        
+          
+            It’s up to you as Nancy Drew… Did you know that between 1998 and 2015, the video game company HER Interactive released 32 Nancy Drew PC point-and-click adventure games? If you’ve spent any time with me in real life, then you definitely know about them, since I love them and talk about them constantly. I very regularly start a sentence with “Well, there’s this one Nancy Drew game where…”
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

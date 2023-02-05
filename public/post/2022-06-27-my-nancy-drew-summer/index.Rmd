@@ -1,0 +1,68 @@
+---
+title: "Other Duties as Assigned: Recapping My Nancy Drew Summer"
+author: Grace Acton
+date: '2022-06-27'
+categories:
+  - research
+tags:
+  - Nancy Drew
+  - Rufus Porter
+  - summer 2022
+publishdate: '2022-06-27T17:18:21-04:00'
+comments: yes
+---
+# _It's up to you as Nancy Drew..._
+
+Yes, I am aware that it is October and the summer is long over, but...
+
+Did you know that between 1998 and 2015, the video game company HER Interactive released 32 Nancy Drew PC point-and-click adventure games? If you've spent any time with me in real life, then you definitely know about them, since I love them and talk about them constantly. I very regularly start a sentence with "Well, there's this one Nancy Drew game where..." 
+
+The games are great. Even the ones from the late 90s, despite their, uh, outdated style and interface problems (looking at you, _Stay Tuned for Danger_).
+
+```{r dwayne-powers, echo=FALSE, out.width = "300px", fig.align='center', fig.cap="Dwayne Pooooowersssss"}
+knitr::include_graphics("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfkZ0oBnc1Wb4r0JUe9enShcbDzf8mX11ogA&usqp=CAU")
+```
+
+I'm not here to talk about all of these fantastic games, though. Just two in particular - the two MUSEUM INTERNSHIP games. Yes, Nancy Drew is an intern at a museum for not one, but two of these games. 
+
+## ND6: Secret of the Scarlet Hand
+
+Our first museum-themed entry in the Nancy Drew universe takes us back to 2002, the year after I was born. In _Secret of the Scarlet Hand_, Nancy's rich dad's rich friend, Franklin Rose, sets her up with a Deputy Curator position at the Beech Hill Museum in Washington, D.C.. Don't worry, the job is unpaid - this is a museum, after all. 
+
+To be more specific, the Beech Hill Museum specializes in the ancient Maya civilization. Our cast of characters includes Joanna Riggs, the museum's curator; Henrick van der Hune, an expert in Mayan glyphs; Alejandro del Rio, an employee of the Mexican consulate; and Taylor Sinclair, a shady art dealer who offers you suspicious Oaxacan cookies. Nancy's task list starts off with your classic museum intern tasks: reordering supplies, fixing a broken audio tour system, rearranging exhibit labels, and testing out some interactive displays. 
+
+However, there is quickly a turn of events: the Museum's precious jade carving of King Pacal is stolen! To add to the intrigue, the thief leaves behind a piece of paper with nothing but a Mayan glyph and a scary red handprint on it. Being an amateur sleuth, Nancy is immediately on the case. She calls the other museums and private collectors that own similar carvings, only to discover that some of their pieces have been stolen as well. 
+
+I won't spoil it all, but it's a great story. There's a ring of smugglers, forged provenance documentation, and, to top it all off, one character falls off the giant replica pyramid exhibit and gets amnesia. Amazing. 
+
+## ND31: Labyrinth of Lies
+
+Released in 2014, _Labyrinth of Lies_ is Nancy's second museum internship, and this time she gets to go all the way to Greece! The Phidias Cultural Center has hired Nancy to assist in preparations for a special exhibit that will coincide with the premiere of a play called _Persephone in Winter_. When Nancy arrives, however, things take a dramatic turn. The museum curator, Melina Rossi, is nowhere to be found. When Nancy finally gets a call from her, Melina reveals that most of the museum staff have quit, and there are artifacts missing. 
+
+Our cast of characters is equally kooky in this game. The first person we meet is Xenia Doukas, the lead actress and director of _Persephone in Winter_. Melina has essentially left the museum in Xenia's extremely underqualified hands. Xenia spends her time in the gorgeous amphitheater next to the museum, doing...who knows what. She has a notepad and a heavily annotated script, so I guess she's doing director stuff. Next we have Niobe Papadaki, a quiet artist struggling to balance the role of Demeter and her prop-making responsibilities. There is also Grigor Karakinos, a theater techie who has been roped into playing Hermes in the play in addition to all of his technological duties. Lastly, we have Thanos Ganas, a convicted murderer and member of a criminal organization called Kronos. He's playing Hades, duh. 
+
+This one's plot gets kind of unhinged, but it's fantastic. Once again, I will refrain from spoiling anything, but Nancy's task list has a classic museum intern level of randomness. Her responsibilities range from printing tickets for the play and making seating charts, to doing actual object study and provenance research to determine which artifacts in the museum have been replaced with fakes. 
+
+## What made this a "Nancy Drew Summer"?
+
+I solved no great mystery this summer. I wasn't even really presented with any kind of mystery, except for maybe the ongoing puzzle that is attribution of Rufus Porter School landscape murals (Which I may have made progress on! More on that in another post). 
+
+But, to me, a Nancy Drew game isn't just about the primary mystery. 
+
+### Historical Subplots
+
+Almost every Nancy Drew game has a secondary, historical plot. In _Scarlet Hand_, it's about an ancient Mayan scribe and her tomb. In other games, we've have had a World War II spy story (*Danger by Design*), an Old West outlaw romance (*Secret of Shadow Ranch*), and a Prohibition-era gangster (*Ghost Dogs of Moon Lake*). In the process of investigating whatever theft, kidnapping, murder, vandalism, eccentric fashion designer, game show, or ghost has come to her attention, Nancy will also uncover more information about this other topic. Often, the two intertwine.
+
+My historical subplot of particular interest this summer was Jonathan D. Poor and the art he left behind. Jonathan Poor, aka JDP, was Rufus Porter's nephew; his mother was Rufus's sister, Ruth Porter Poor. He was born near Sebago Lake in Baldwin, Maine in 1807. JDP probably learned to paint through a sort of apprenticeship with his uncle during the 1820s. At this time, Rufus was mostly working on watercolor portraits and hollow-cut silhouettes, but some Porter School landscape murals have been dated to this period as well.
+
+JDP's first signed and dated work is from 1830, painted in the Silas Burbank House of Mount Vernon. 6 panels from this house are now owned by the Rufus Porter Museum, and another one is installed at the Scottish Rite Masonic Museum and Library in Lexington, Massachusetts. 
+
+```{r jdp-baldwin, echo=FALSE, out.width="300px", fig.align='center', fig.cap='*J.D. Poor, 1930* signature from the Silas Burbank House. Image from "Rediscovering the Murals of Jonathan D. Poor" by Jane E. Radcliff. https://www.afanews.com/articles/item/525-rediscovering-the-murals-of-jonathan-d-poor'}
+knitr::include_graphics("http://s3.amazonaws.com/afanews_articles/01019/FIG-5_-%282.37-pg.png")
+```
+
+There are 12 signed JDP murals in total - 10 in Maine and 2 in Massachusetts. This is a huge body of signed work in comparison to his uncle Rufus Porter, who only signed 3 murals, all of which are in eastern Massachusetts. Additionally, 5 of those signed JDP murals are also dated by the artist, giving us a very clear time frame for his work. His first known work is the aforementioned Silas Burbank House with murals 1830, and his final work, from 1842, was found in an abandoned house in Mercer, Maine. In total, roughly 40 murals have been attributed to Jonathan D. Poor, a very small number of the over 200 known Rufus Porter School murals. Meanwhile, more than 100 murals all over New England have been attributed to Rufus Porter himself, despite only signing 3 of them in a much smaller geographical area than Poor worked in.
+
+Since my very first research on the Rufus Porter School murals, I've had this feeling that Jonathan Poor has k
+
+

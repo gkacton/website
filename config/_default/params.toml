@@ -1,6 +1,6 @@
 # enable search
 enableSearch = false
-# baseurl = "https://example.com/"  # Include trailing slash
+baseurl = "https://dressing-up-data.netlify.app/"  # Include trailing slash
 title = "Dressing Up Data"
 AuthorName = "Grace Acton"
   # copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
@@ -143,12 +143,12 @@ photo = "images/GActonSummer22_cropped.jpeg" #include this if you would like to 
 
 [plausible_analytics]
 enable = false # to enable plausible analytics set to true.
-websiteDomain = "example.com" # domain name of your website, most cases same as your base url
+websiteDomain = "dressing-up-data.netlify.app" # domain name of your website, most cases same as your base url
 # plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is selfhosted
 # scritpName = "plausible" # default is set to plausible, only required if using a custome name for script
 
 [matomo_analytics]
 enable = false # To enable matomo analytics change to `true`.
-websiteDomain = "example.com" # Set the domain name of your website, in most cases same as your base URL this is required.
+websiteDomain = "dressing-up-data.netlify.app" # Set the domain name of your website, in most cases same as your base URL this is required.
 matomoDomain = "matomo.example.com" # Set to Matomo domain
 matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracked

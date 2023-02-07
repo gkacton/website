@@ -1,0 +1,398 @@
+---
+title: Detective Data/Data Detective 
+author: Grace Acton
+date: '2023-02-05'
+slug: V4H-ND-rankings
+categories:
+  - research
+tags:
+  - R
+  - Nancy Drew
+description: Article description.
+featured: yes
+toc: no
+usePageBundles: no
+featureImage: ND_games_logo.png
+featureImageAlt: 
+featureImageCap: Nancy Drew Games Logo.
+thumbnail: 
+shareImage: ND_games_logo.png
+codeMaxLines: 100
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+**Let's do some Nancy Drew analysis!**
+
+Back story: I love Nancy Drew - the character, the books, and especially the point-and-click adventure games by [HerInteractive](https://www.herinteractive.com/). Even though these games are by no means the world's most well-known computer games, there is a vibrant online presence of ND fans, including, for the past couple years, [Vote4Holt](https://www.youtube.com/@vote4holt). Comprised of brothers Julian and Jameson, Vote4Holt is a YouTube channel dedicated to all sorts of Nancy Drew content, from no-commentary playthroughs, to let's plays, and, most importantly, the most comprehensive ND game ranking system I've seen. 
+
+Julian and Jameson started out by created separate rankings of the Nancy Drew games for each of six categories: story, suspects, puzzles, music, atmosphere, endings. While no ranking can be truly objective, I like this system because it forces you to consider the strengths and weaknesses of each game. Let's say you have a game that's a personal favorite because you, personally, really like hard puzzles; in the Vote4Holt ranking system, that only counts for 1/6 of the game's actual score. If the other pieces of the game don't hold up, that game really shouldn't rank high overall, even if the puzzles are really good. 
+
+So, by virtue of breaking the game rankings into separate categories, we have the making of an awesome data set! Let's take a look at our initial data:
+
+```{r load-data, message=FALSE, echo=FALSE, out.width="75%"}
+# Load Packages
+
+library(dplyr) 
+library(stats)
+library(ggplot2)
+library(plotly)
+library(knitr)
+library(DT)
+
+# Import Vote4Holt rankings spreadsheet
+
+nd_rankings <- read.csv("V4H_NDRankings.csv")
+nd_rankings$game_abv[23] <- "SAW"
+nd_rankings <- nd_rankings %>% 
+  select(-wk_era) %>% 
+  select(game_full, game_abv, ui_era, story, suspects, puzzles, music, atmosphere, ending)
+
+datatable(nd_rankings,
+      colnames = c("Game Number", "Game", "Abbreviation", "UI", "Story", "Suspects", "Puzzles", "Music", "Atmosphere", "Ending"),
+      options = list(scrollX = TRUE)
+)
+```
+
+You'll notice that I've added a column beyond just the rankings called `ui_era`. The Nancy Drew games have used several different user interfaces over the 20+ years that the games have been made, and I was curious whether that had any impact on their rankings. For more information about the different UIs, and explanations of their names, check out this [post](https://nancydrew.fandom.com/wiki/Interfaces) on the Nancy Drew Wiki.
+
+***Ranking #1: Simple Averages***
+
+Alright, now that we have our basic data, we can start doing some basic analysis. The first, most straightforward way to turn these scores into an overall ranking is to average all of the scores, and rank from lowest to highest. In other words, the closer the average is to 1, the better it ranks. 
+
+```{r simple-avg, message=FALSE, echo=FALSE, out.width="75%"}
+basic_rank <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>% 
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>% 
+  select(game_full, simple_avg) %>% 
+  arrange(simple_avg)
+
+DT::datatable(basic_rank, colnames = c("Rank", "Game", "Average Score"))
+
+```
+
+Now we can see how the games rank if we value all categories equally. We see that _Danger on Deception Island_ narrowly beats out a tie for second place between _Last Train to Blue Moon Canyon_ and _Legend of the Crystal Skull_. Shockingly, _Midnight in Salem_ managed to make it all the way to 27th place instead of being dead last!
+
+*Which UI ranks best in each category?*
+
+Let's take a look at what happens if we group the games by their UI and average their category scores:
+
+```{r ui-cat-rankings, echo=F, message=F}
+
+ui_rankings <- nd_rankings %>% 
+  group_by(ui_era) %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  summarize(story_avg = mean(story),
+            suspects_avg = mean(suspects),
+            puzzles_avg = mean(puzzles),
+            music_avg = mean(music),
+            atmosphere_avg = mean(atmosphere),
+            ending_avg = mean(ending),
+            score_avg = mean(simple_avg)) %>% 
+  mutate(story = round(story_avg, digits = 3),
+         suspects = round(suspects_avg, digits = 3),
+         puzzles = round(puzzles_avg, digits = 3),
+         music = round(music_avg, digits = 3),
+         atmosphere = round(atmosphere_avg, digits = 3),
+         ending = round(ending_avg, digits = 3),
+         score = round(score_avg, digits = 3)) %>% 
+  select(ui_era, story, suspects, puzzles, music, atmosphere, ending, score) %>% 
+  arrange(score)
+
+
+datatable(ui_rankings,
+          colnames = c("UI", "Story", "Suspects", "Puzzles", "Music", "Atmosphere", "Ending", "Overall"))
+```
+
+Here, we see that the Exploration era ranks best overall, but there are some other winners in individual categories. 
+
+**What if you don't value all categories the same?**
+
+People have very different ideas of what makes a good Nancy Drew game. For me, puzzles are a very important part of the experience, along with suspects. For other people, the overall story might be the most important part. So, with this in mind, let's think about some alternative rankings.
+
+***The Vibes Ranking***
+
+Some people love playing Nancy Drew games for the vibes. Nancy travels all over the world, and these games have some of the best video game music I've ever heard. 
+
+In our data set, the relevant categories for a vibes-based ranking are `music` and `atmosphere`. To get a vibes-based ranking, we should calculate a *weighted average*, in which these two categories are given a higher weight than the others. For the purpose of being able to see a difference in the data, I've decided to give these two categories a weight of 3, and the others a weight of 1. 
+
+```{r vibes-avg-table, echo=FALSE, message=FALSE}
+vibe_weights <- c(1, 1, 1, 3, 3, 1)
+
+vibe_rankings <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(vibes_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), vibe_weights)) %>% 
+  select(game_full, vibes_avg) %>% 
+  arrange(vibes_avg)
+
+DT::datatable(vibe_rankings,
+          colnames = c("Rank", "Game", "Vibes Score"))
+
+```
+
+_Danger on Deception Island_ remains the winner, but notice that _Crystal Skull_ has moved from second place all the way down to 6th place - this is because it ranked 20th for music. At the very end of the list, _Shattered Medallion_ has surpassed _Secrets Can Kill_, as it should for a more vibes-based ranking; if I'm playing a game for the vibes, I'd rather be in New Zealand than a generic high school in Florida!
+
+*_Does UI factor into this ranking?_*
+
+Of all of the alternative rankings, this is the one that I hypothesize has most to do with user interface. Let's see how each UI scores, on average:
+
+```{r ui-vibe-table, echo=FALSE, message=FALSE}
+
+vibe_rankings_UI <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>% 
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>% 
+  rowwise() %>% 
+  mutate(vibes_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), vibe_weights)) %>% 
+  select(game_full, simple_avg, vibes_avg, ui_era) %>% 
+  group_by(ui_era) %>% 
+  summarize(mean_score = mean(simple_avg), 
+            mean_vibes = mean(vibes_avg)) %>% 
+  mutate(mean_score = round(mean_score, digits = 3),
+         mean_vibes = round(mean_vibes, digits = 3)) %>% 
+  arrange(mean_score)
+
+  
+
+DT::datatable(vibe_rankings_UI,
+          colnames = c("UI", "Average Base Score", "Average Vibes Score"))
+```
+
+So, we see that while games from the Exploration era (games 16-25) rank the best in overall scores, the Short era (games 10-15) rank considerably better based on vibes. 
+
+For another visualization of which era's games rank better on vibes, we can look at a scatterplot comparing each game's overall score and vibes score.
+
+```{r ui-vibe-scatterplot, echo=FALSE, message=FALSE, warning=FALSE}
+
+vibes_plot_prep <-nd_rankings %>%
+  rowwise() %>%
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>%
+  rowwise() %>%
+  mutate(vibes_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), vibe_weights))
+
+vibes_ggplot <- vibes_plot_prep %>%
+  ggplot() +
+  geom_point(aes(x = simple_avg,
+                           y = vibes_avg,
+                           color = ui_era)
+
+  ) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  geom_abline(slope = 1, intercept = 0) +
+  xlab("Average Score") +
+  ylab("Vibes Score") +
+  labs(title = "Vibes Score vs Average Score",
+       color = "UI Era") +
+  theme_light() +
+  theme(
+    text = element_text(
+                        family = "Courier"
+    )
+  ) +
+  scale_color_manual(values = c("#7A0700", "#FED5A6", "#D2AF26", "#043846", "#B3C2C5"))
+
+vibes_ggplot
+
+```
+
+Games that fall above the line ranked higher on their vibe scores than overall scores, while points below the line scored lower on their vibes scores relative to their overall scores. Looking at this plot, we see that there are more red and peach points above the line, and more light blue points below the line. What does this mean? Games from the Exploration and Short eras tended to score higher on vibes than they do for overall scores, whereas games from the Updated UI era (games 26-32) scored worse on vibes than they did overall. Interestingly, these later games coincide with a change in the games' music composer: Kevin Manthei composed the music for games 1-25, while Thomas Regin composed for games 26-32. While I don't necessarily remember the earlier games as having distinctly better music, perhaps this change contributed to these games' relatively lower scores in the vibe categories. 
+
+***The Writing Ranking***
+
+Another perspective might argue that the quality of writing is what separates the quality of Nancy Drew games. Among the six ranked categories, there are 3 that, together, can indicate the overall rating of writing quality: `story`, `suspects`, and `endings`. 
+
+Once again, we will compute weighted averages, giving these three categories a weight of 3 while keeping the other categories at a weight of 1:
+
+```{r writing-scores, echo=F, message=F}
+
+writing_weights <- c(3, 3, 1, 1, 1, 3)
+
+writing_rankings <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(writing_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), writing_weights)) %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3),
+         writing_avg = round(writing_avg, digits = 3)) %>%
+  select(game_full, writing_avg) %>% 
+  arrange(writing_avg)
+
+datatable(writing_rankings,
+          colnames = c("Game", "Writing Score"))
+
+```
+
+Hello, _Final Scene_! 
+
+*Does writing quality correspond to UI?*
+
+Let's take another look at UI, this time with relation to writing.  
+
+```{r ui-writing-table, echo=FALSE, message=FALSE}
+
+writing_weights <- c(3, 3, 1, 1, 1, 3)
+
+writing_rankings_UI <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>% 
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>% 
+  rowwise() %>% 
+  mutate(writing_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), writing_weights)) %>% 
+  select(game_full, simple_avg, writing_avg, ui_era) %>% 
+  group_by(ui_era) %>% 
+  summarize(mean_score = mean(simple_avg), 
+            mean_writing = mean(writing_avg)) %>% 
+  mutate(mean_score = round(mean_score, digits = 3),
+         mean_writing = round(mean_writing, digits = 3)) %>% 
+  arrange(mean_score)
+
+  
+
+DT::datatable(writing_rankings_UI,
+          colnames = c("UI", "Average Base Score", "Average Writing Score"))
+```
+
+This time, the newer games from the Updated UI era ranked _better_ on average based on their writing in comparison to their overall scores. Let's look at a scatterplot of this data:
+
+```{r ui-writing-scatterplot, echo=FALSE, message=FALSE, warning=FALSE}
+
+writing_plot_prep <-nd_rankings %>%
+  rowwise() %>%
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>%
+  rowwise() %>%
+  mutate(writing_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), writing_weights))
+
+writing_ggplot <- writing_plot_prep %>%
+  ggplot() +
+  geom_point(aes(x = simple_avg,
+                           y = writing_avg,
+                           color = ui_era)
+
+  ) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  geom_abline(slope = 1, intercept = 0) +
+  xlab("Average Score") +
+  ylab("Writing Score") +
+  labs(title = "Writing Score vs Average Score",
+       color = "UI Era") +
+  theme_light() +
+  theme(
+    text = element_text(
+                        family = "Courier"
+    )
+  ) +
+  scale_color_manual(values = c("#7A0700", "#FED5A6", "#D2AF26", "#043846", "#B3C2C5"))
+
+writing_ggplot
+
+```
+
+The points are a little more all-over-the-place this time, but we can see that the light blue points, corresponding to the Updated era, are consistently above the line, again suggesting that these games are stronger in the writing categories relative to their other scores. 
+
+***The Interaction Ranking***
+
+The last ranking subset I wanted to look at was a combination of `puzzles` and `suspects`, because those are two key ingredients to making a game hold my attention. I'm calling this ranking the *Interaction Ranking*, because puzzles and character dialogue are two major ways that the play interacts with the game. 
+
+Once again, we'll compute weighted averages, giving these two categories a weight of 3, while keeping the other categories at a 1:
+
+```{r interaction-scores, echo=F, message=F}
+
+interaction_weights <- c(1, 3, 3, 1, 1, 1)
+
+interaction_rankings <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(interaction_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), interaction_weights)) %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3),
+         interaction_avg = round(interaction_avg, digits = 3)) %>%
+  select(game_full, interaction_avg) %>% 
+  arrange(interaction_avg)
+ 
+datatable(interaction_rankings,
+          colnames = c("Game", "Interaction Score"))
+
+```
+
+We have yet another new winner! For interaction, _Sea of Darkness_ takes first place. 
+
+*Are interaction scores related to UI?*
+
+Let's look at UI group averages again, this time for the new interaction scores.
+
+```{r ui-interaction-table, echo=F, message=F}
+
+interaction_rankings_ui <- nd_rankings %>% 
+  rowwise() %>% 
+  mutate(interaction_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), interaction_weights)) %>% 
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3),
+         interaction_avg = round(interaction_avg, digits = 3)) %>%
+  select(game_full, simple_avg, interaction_avg, ui_era) %>% 
+  group_by(ui_era) %>% 
+  summarize(mean_score = mean(simple_avg), 
+            mean_interaction = mean(interaction_avg)) %>% 
+  mutate(mean_score = round(mean_score, digits = 3),
+         mean_interaction = round(mean_interaction, digits = 3)) %>% 
+  arrange(mean_score)
+
+ 
+datatable(interaction_rankings_ui,
+          colnames = c("UI", "Average Base Score", "Average Interaction Score"))
+
+```
+
+The Updated UI once again scores better in this category compared to its overall scoring average. Notably, the Starter, or original, UI (games 1-9) seems to score worse in this category. Let's look at another scatterplot to get a better sense of this comparison:
+
+```{r ui-interaction-scatterplot, echo=FALSE, message=FALSE, warning=FALSE}
+
+interaction_plot_prep <-nd_rankings %>%
+  rowwise() %>%
+  mutate(simple_avg = mean(c(story, suspects, puzzles, music, atmosphere, ending))) %>%
+  mutate(simple_avg = round(simple_avg, digits = 3)) %>%
+  rowwise() %>%
+  mutate(interaction_avg = weighted.mean(c(story, suspects, puzzles, music, atmosphere, ending), interaction_weights))
+
+interaction_ggplot <- interaction_plot_prep %>%
+  ggplot() +
+  geom_point(aes(x = simple_avg,
+                           y = interaction_avg,
+                           color = ui_era)
+
+  ) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  geom_abline(slope = 1, intercept = 0) +
+  xlab("Average Score") +
+  ylab("Interaction Score") +
+  labs(title = "Interaction Score vs Average Score",
+       color = "UI Era") +
+  theme_light() +
+  theme(
+    text = element_text(
+                        family = "Courier"
+    )
+  ) +
+  scale_color_manual(values = c("#7A0700", "#FED5A6", "#D2AF26", "#043846", "#B3C2C5"))
+
+interaction_ggplot
+
+```
+
+Here, we see three patterns of note: 
+
+1. The Updated era games (light blue) are consistently above the line, meaning they generally score higher in suspects and puzzles than the other categories.
+
+2. The Starter era games (gold) are mostly just below the line, indicating that they score slightly worse in these categories than in other categories. Having played all 33 ND games, I'd generally say that the puzzles increase in quality and quantity as the series progresses (excluding _Midnight in Salem_, of course), so it makes sense that this first set of games is ranked lower in the interaction categories.
+
+3. The Exploration era games (red) are split evenly between above the line, below the line, and exactly on the line. In other words, these games are very consistent in their scores: they don't, overall, score any higher or lower on interaction categories than they do in the other categories. 
+
+**Final Comments**
+
+Having looked at this data extensively, I still can't come to any definitive conclusion on what the best Nancy Drew is, or what the best _era_ of ND games is. I think, generally, the Exploration era games are the most consistent in quality. But, as Julian and Jameson certainly found while working on their rankings, so much about ranking these games is subjective, and depends on what you personally value in your entertainment. I'd be really curious to see how the games would rank if we had a larger sample of fans use the same ranking system, and were able to average the data to get rid of some of the bias. 
+
+_If you're interested in using this data, it will be up on my GitHub, so you can spare yourself the transcription time! Let me know if you come to any more conclusions, or just other ways of looking at this data._
+
